@@ -1,0 +1,1 @@
+A folder for the second task of the test, it will contain .NET and some basic db handling.
