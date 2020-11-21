@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace second_task
 {
     class Program
     {
         static Random rnd = new Random();
+        public static Dictionary<string, string> from_olvass_txt = new Dictionary<string, string>(); // másik megoldás egy "olvass" class lenne
+                                                                                                    // de a dictionary itt adja magát
          static List<int> randomNumbers(int b, byte db) //Visszaad "db" egyedi random számot [1 ; b[ intervallumon                                          
          {
             if (b <= db)
@@ -29,10 +32,59 @@ namespace second_task
            
             return randomList;
          }
-        static void Main(string[] args)
+        //
+        static void readOlvassTxt()
         {
-            List<int> randomNums = randomNumbers(51, 10);
-
+            StreamReader sr = new StreamReader("olvass.txt");
+            string sor;
+            string key;
+            string value;
+            while ((sor = sr.ReadLine()) != null)
+            {
+                string[] data = sor.Split('|');
+                key = data[0];
+                value = data[1];
+                from_olvass_txt.Add(key, value);
+            }
+            sr.Close();
+        }
+        //
+        static List<string> convertRandomNumbersToString(List<int> numbers)
+        {
+            List<string> randomNumsString = new List<string>();
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                randomNumsString.Add(numbers[i].ToString());
+                Console.WriteLine(randomNumsString[i]);
+            }
+            return randomNumsString;
+        }
+        //
+        static List<int> randomNums = randomNumbers(51, 10);
+        static List<string> randomNumsString = convertRandomNumbersToString(randomNums); // a könnyebb kezelhetőségért stringre konvertálom
+        //
+        static List<int> selectedValues()
+        {
+            List<int> values = new List<int>();
+            int z;
+            foreach (KeyValuePair<string, string> a in from_olvass_txt)
+            {
+                if (randomNumsString.Contains(a.Key))
+                {
+                    if (int.TryParse(a.Value, out z) && z > 0)
+                    {
+                        values.Add(z);
+                    }
+                }
+            }
+            return values;
+        }
+        static void Main(string[] args)
+        {                      
+            readOlvassTxt();
+            //from_olvass_txt.Remove("KEY");
+            List<int> user_id_list = selectedValues();
+           
             Console.ReadKey();
         }
     }
