@@ -1,1 +1,2 @@
-A folder for the second task of the test, it will contain .NET and some basic db handling.
+Because of some character encoding issues, I have question marks all over the place in my DB, I already tried utf8_general , _hungarian_ci besides the default utf8mb4_0900_ai_ci ,
+but nothing seems to work. That is why you can see "?" instead of "áéű..." in result.txt 

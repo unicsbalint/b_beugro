@@ -10,6 +10,7 @@ namespace second_task
 {
     class Program
     {
+        static StreamWriter sw = new StreamWriter("result.txt");
         public const string connectionString = "server=127.0.0.1;port=3306;user id=root; password=; database=cs_beugro; SslMode=none";
         static Random rnd = new Random();
         public static Dictionary<string, string> from_olvass_txt = new Dictionary<string, string>(); // másik megoldás egy "olvass" class lenne
@@ -89,6 +90,7 @@ namespace second_task
             List<int> user_id_list = selectedValues();
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
+            sw.WriteLine("tulajdonos" + "\t" + "márka" + "\t" + "tipus");
             for (int i = 0; i < user_id_list.Count; i++)
             {
                 MySqlCommand cmd_database = new MySqlCommand(String.Format("SELECT user.name,car.brand,car.model FROM user,car,user_car WHERE user.id = user_car.user AND user_car.car = car.id AND user.id = {0}", user_id_list[i]), connection);
@@ -97,12 +99,13 @@ namespace second_task
                 {
                     while (dr.Read())
                     {
-                        Console.WriteLine(dr.GetString(0) + " - " + dr.GetString(1) + " - " + dr.GetString(2));
+                        sw.WriteLine(dr.GetString(0) + "\t" + dr.GetString(1) + "\t" + dr.GetString(2));                       
+                        //Console.WriteLine(dr.GetString(0) + "\t" + dr.GetString(1) + "\t" + dr.GetString(2));
                     }
                 }
                 dr.Close();
             }
-
+            sw.Close();
             Console.ReadKey();
         }
     }
