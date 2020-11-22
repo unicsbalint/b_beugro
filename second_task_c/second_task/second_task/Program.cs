@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.IO;
 
 namespace second_task
@@ -8,15 +11,15 @@ namespace second_task
     {
         static Random rnd = new Random();
         public static Dictionary<string, string> from_olvass_txt = new Dictionary<string, string>(); // másik megoldás egy "olvass" class lenne
-                                                                                                    // de a dictionary itt adja magát
-         static List<int> randomNumbers(int b, byte db) //Visszaad "db" egyedi random számot [1 ; b[ intervallumon                                          
-         {
+                                                                                                     // de a dictionary itt adja magát
+        static List<int> randomNumbers(int b, byte db) //Visszaad "db" egyedi random számot [1 ; b[ intervallumon                                          
+        {
             if (b <= db)
             {
                 throw new Exception(string.Format("Nem tudok {0} db egyedi random számot generálni 1-{1} között!", db, b));
             }
-           List<int> randomList = new List<int>();
-           int num;
+            List<int> randomList = new List<int>();
+            int num;
             for (int i = 0; i < db; i++)
             {
                 num = rnd.Next(1, b);
@@ -29,9 +32,9 @@ namespace second_task
                     i--;
                 }
             }
-           
+
             return randomList;
-         }
+        }
         //
         static void readOlvassTxt()
         {
@@ -80,11 +83,11 @@ namespace second_task
             return values;
         }
         static void Main(string[] args)
-        {                      
+        {
             readOlvassTxt();
             //from_olvass_txt.Remove("KEY");
             List<int> user_id_list = selectedValues();
-           
+
             Console.ReadKey();
         }
     }

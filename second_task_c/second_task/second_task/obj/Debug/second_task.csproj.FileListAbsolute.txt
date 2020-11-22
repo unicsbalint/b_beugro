@@ -1,0 +1,8 @@
+C:\Users\Balint\Desktop\b_beugro\second_task_c\second_task\second_task\bin\Debug\second_task.exe.config
+C:\Users\Balint\Desktop\b_beugro\second_task_c\second_task\second_task\bin\Debug\second_task.exe
+C:\Users\Balint\Desktop\b_beugro\second_task_c\second_task\second_task\bin\Debug\second_task.pdb
+C:\Users\Balint\Desktop\b_beugro\second_task_c\second_task\second_task\obj\Debug\second_task.csprojAssemblyReference.cache
+C:\Users\Balint\Desktop\b_beugro\second_task_c\second_task\second_task\obj\Debug\second_task.csproj.CoreCompileInputs.cache
+C:\Users\Balint\Desktop\b_beugro\second_task_c\second_task\second_task\obj\Debug\second_task.exe
+C:\Users\Balint\Desktop\b_beugro\second_task_c\second_task\second_task\obj\Debug\second_task.pdb
+C:\Users\Balint\Desktop\b_beugro\second_task_c\second_task\second_task\bin\Debug\olvass.txt

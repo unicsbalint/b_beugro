@@ -1,4 +1,4 @@
-KEY|VALUE
+﻿KEY|VALUE
 1|38
 2|2
 3|34
