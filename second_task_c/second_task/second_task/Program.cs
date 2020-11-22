@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace second_task
 {
     class Program
     {
+        public const string connectionString = "server=127.0.0.1;port=3306;user id=root; password=; database=cs_beugro; SslMode=none";
         static Random rnd = new Random();
         public static Dictionary<string, string> from_olvass_txt = new Dictionary<string, string>(); // másik megoldás egy "olvass" class lenne
                                                                                                      // de a dictionary itt adja magát
@@ -58,7 +60,6 @@ namespace second_task
             for (int i = 0; i < numbers.Count; i++)
             {
                 randomNumsString.Add(numbers[i].ToString());
-                Console.WriteLine(randomNumsString[i]);
             }
             return randomNumsString;
         }
@@ -85,8 +86,22 @@ namespace second_task
         static void Main(string[] args)
         {
             readOlvassTxt();
-            //from_olvass_txt.Remove("KEY");
             List<int> user_id_list = selectedValues();
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+            for (int i = 0; i < user_id_list.Count; i++)
+            {
+                MySqlCommand cmd_database = new MySqlCommand(String.Format("SELECT user.name,car.brand,car.model FROM user,car,user_car WHERE user.id = user_car.user AND user_car.car = car.id AND user.id = {0}", user_id_list[i]), connection);
+                MySqlDataReader dr = cmd_database.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        Console.WriteLine(dr.GetString(0) + " - " + dr.GetString(1) + " - " + dr.GetString(2));
+                    }
+                }
+                dr.Close();
+            }
 
             Console.ReadKey();
         }
