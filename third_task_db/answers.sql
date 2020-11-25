@@ -2,17 +2,17 @@
 SELECT user.name FROM `user`,user_car WHERE user_car.user = user.id and name LIKE "Kis%" GROUP BY user_car.user HAVING COUNT(user_car.user) = 0;
 
 2.listázd azon userek nevét, akiknek legalább 2 autója van	
-SELECT user.name FROM `user`,user_car WHERE user_car.user = user.id GROUP BY user_car.user HAVING COUNT(user_car.user) > 1;
+SELECT user.name FROM `user`,user_car WHERE user_car.user = user.id GROUP BY user.name HAVING COUNT(user_car.user) > 1
 
 2.1
-backlog
+SELECT user.name, GROUP_CONCAT(car.brand," ",car.model, "," ) as 'car' FROM car,`user`,user_car WHERE user_car.user = user.id and car.id = user_car.car GROUP BY user.name HAVING COUNT(user_car.user) > 1
 
 3. szúrj be két oszlopot a user táblába: szemelyi_szam , nem
 ALTER TABLE user
 ADD szemelyi_szam varchar(11);
 ALTER TABLE user
 ADD nem BIT;
--- 1=férfi 0=nő
+-- 1=férfi 0=nő illetve lehetne számként is tárolni a személyi számot, ha szeretnénk belőle számolni születési dátumot és így a "nem" oszlop is felesleges, mert a személyi számból kiszámolható az ember neme is. https://www.penzcentrum.hu/karrier/mit-arul-el-rolad-a-szemelyi-szamod-ezt-biztos-nem-tudtad.1047141.html
 
 4.
 INSERT INTO `car`(`brand`, `model`) VALUES ("Volkswagen","Arteon")
