@@ -1,9 +1,11 @@
 tulajdonos	márka	tipus
-Szil?gyi Bertalan	Opel	Astra
+Barta Noel	Fiat	126
+Moln?r Alexander	Fiat	Seicento
 Budai Jakab	Opel	Astra
 F?l?p Kriszti?n	Fiat	Seicento
 Bakos Barnab?s	Fiat	126
-Bal?zs Norbert	Suzuki	Swift
-Bal?zs Szilveszter	Fiat	126
-So?s Gyula	Ford	Focus
-Ol?h Adri?n	Opel	Astra
+P?ter Don?t	Fiat	126
+Farag? Gergo	Fiat	Seicento
+Kozma Imre	Opel	Astra
+Kozma Imre	Fiat	Seicento
+Kozma Imre	Ford	Focus
