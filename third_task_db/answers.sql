@@ -29,3 +29,7 @@ INSERT INTO `user_car`(`user`, `car`)
 
 7.biztosítsd a user_car tábla egyediségét index segítségével	
 
+ALTER TABLE user_car ADD uid varchar(12);
+UPDATE `user_car` SET `uid`=(SELECT CONCAT("BOSCH-",FLOOR(9979 + RAND() * 89999)) AS kulcs
+FROM user_car
+LIMIT 1) WHERE "kulcs" NOT IN (SELECT uid FROM user_car)
